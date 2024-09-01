@@ -1,0 +1,45 @@
+@import "variables";
+$border-radius: 10px;
+.toast-error {
+  --background: #e74c3c; // Color rojo para error
+  color: #fff;
+  border-radius: $border-radius;
+  font-family: $medium;
+
+  &::part(icon) {
+    font-size: 2em !important;
+  }
+}
+
+.toast-success {
+  --background: #2ecc71; // Color verde para éxito
+  color: #fff;
+  border-radius: $border-radius;
+  font-family: $medium;
+
+  &::part(icon) {
+    font-size: 2em !important;
+  }
+}
+
+.toast-info {
+  --background: #3498db; // Color azul para información
+  color: #fff;
+  border-radius: $border-radius;
+  font-family: $medium;
+
+  &::part(icon) {
+    font-size: 2em !important;
+  }
+}
+
+.toast-warning {
+  --background: #f39c12; // Color naranja para advertencia
+  color: #fff;
+  border-radius: $border-radius;
+  font-family: $medium;
+
+  &::part(icon) {
+    font-size: 2em !important;
+  }
+}

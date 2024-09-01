@@ -46,8 +46,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
+                "input": "src/libs/base/assets",
+                "output": "/assets"
               },
               {
                 "glob": "**/*.svg",

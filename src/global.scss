@@ -34,4 +34,152 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+//@import "@ionic/angular/css/palettes/dark.system.css";
+
+@import "theme/toast";
+@import "theme/variables";
+@import "theme/animation";
+@import "theme/alerts";
+@import "theme/toolbar";
+
+// Otros estilos globales
+body {
+  font-family: $default;
+  --webkit-transform: translate3d(0, 0, 0);
+  --webkit-transform-style: preserve-3d;
+  --webkit-transform: translateZ(0);
+  --webkit-perspective: 1000;
+  --webkit-backface-visibility: hidden;
+}
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+//@import '@ionic/angular/css/palettes/dark.system.css';
+
+/*
+body {
+  font-family: var(--ion-font-family);
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-size-base);
+} */
+
+/* Declaración de Nunito_Sans */
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./libs/base/assets/fonts/Nunito_Sans/static/NunitoSans_7pt-Regular.ttf")
+    format("truetype");
+}
+
+/* Declaración de Montserrat Medium */
+@font-face {
+  font-family: "NunitoMedium";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./libs/base/assets/fonts/Nunito_Sans/static/NunitoSans_7pt-Medium.ttf")
+    format("truetype");
+}
+
+/* Declaración de Montserrat Bold */
+@font-face {
+  font-family: "NunitoBold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./libs/base/assets/fonts/Nunito_Sans/static/NunitoSans_7pt-Bold.ttf")
+    format("truetype");
+}
+
+/* Aplicar Montserrat a todo el documento */
+body {
+  font-family: $default, sans-serif;
+}
+
+/* Aplicando Montserrat con diferentes pesos */
+.title {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700; /* Usará Montserrat-Bold.ttf */
+  font-family: $medium, sans-serif;
+}
+
+.sub-title {
+  font-size: 18px;
+  line-height: 1.3;
+  //font-weight: 400; /* Usará Montserrat-Regular.ttf */
+  font-family: $default, sans-serif;
+}
+
+.body-text {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400; /* Usará Montserrat-Regular.ttf */
+  font-family: $default, sans-serif;
+}
+
+.small-text {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 400; /* Usará Montserrat-Regular.ttf */
+  font-family: $default, sans-serif;
+}
+
+.label-text {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 400; /* Usará Montserrat-Regular.ttf */
+  font-family: $default, sans-serif;
+}
+
+.placeholder-text {
+  font-size: 14px;
+  line-height: 1.3;
+  color: #888;
+  font-weight: 400; /* Usará Montserrat-Regular.ttf */
+  font-family: $default, sans-serif;
+}
+
+/* global.scss o styles.scss */
+ion-input {
+  font-family: $default, sans-serif !important;
+  text-align: left;
+  line-height: 1.5 !important;
+  font-size: 16px !important;
+}
+
+/* .modal {
+  &--transparent {
+    --background: white;
+  }
+  .modal-wrapper {
+    background: var(--background);
+  }
+} */
+
+.button-custom {
+  --border-radius: 5px !important;
+  height: 48px;
+  font-family: $medium, sans-serif !important;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+//ANIMATIONS
+
+/* .scroll-content {
+  padding-bottom: 0 !important;
+} */
+
+.modal {
+  &--transparent {
+    --background: rgba(243, 238, 238, 0.902);
+  }
+}

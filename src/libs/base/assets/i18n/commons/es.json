@@ -1,0 +1,25 @@
+{
+  "modals": {
+    "email-confirm": {
+      "image": "assets/images/sign-up/email-approved.png",
+      "title": "¡Te enviamos un codigo a <br/>{0} !",
+      "content": "Usa el codigo que te enviamos para finalizar tu proceso.",
+      "button": "Ok"
+    },
+    "welcome-user": {
+      "image": "assets/images/welcome/happy.png",
+      "title": "¡Bienvenid@ a una nueva aventura donde podremos hacer felices a muchisimos animales!",
+      "button": "Por supuesto :)"
+    },
+    "verification-code": {
+      "enter-code": "Ingresa el codigo.",
+      "enter-numbers": "Escribe los 4 números que enviamos a tu correo para validar que si eres tú.",
+      "generate-new-code": "Generar nuevamente",
+      "image-delete": "assets/images/sign-up/delete.svg",
+      "message-countdown": "Solicita nuevamente el codigo..."
+    }
+  },
+  "toasts": {
+    "invalid-verification-code": "Escribiste mal el código :(<br/>Usa siempre el último código que te llegó."
+  }
+}

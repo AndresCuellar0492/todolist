@@ -1,0 +1,48 @@
+/* .doggy-header {
+  --ion-toolbar-color: white;
+  --ion-toolbar-background: transparent;
+  border-bottom: none;
+
+  ion-toolbar {
+    --border-width: 0;
+    --border-style: none;
+  }
+
+  &--white {
+    --ion-toolbar-background: white;
+  }
+
+  &--color-white {
+    --ion-toolbar-color: white;
+  }
+}
+
+.doggy-title {
+  font-weight: 600;
+  margin-left: 0;
+  z-index: 10;
+
+  &.animated {
+    transition: 0.25s ease-out;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.doggy-header__title {
+  padding: 0;
+  left: 44px;
+  display: none;
+
+  &.animated {
+    transition: 0.25s linear;
+  }
+
+  &.visible {
+    opacity: 1;
+    display: flex;
+  }
+}
+ */

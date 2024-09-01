@@ -1,0 +1,13 @@
+<ion-item>
+  <ion-label [class.completed]="task.completed">
+    {{ task.title }}
+  </ion-label>
+  <ion-buttons slot="end">
+    <ion-button (click)="onComplete()" [disabled]="task.completed">
+      <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" (click)="onDelete()">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-item>

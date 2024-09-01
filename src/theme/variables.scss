@@ -1,2 +1,107 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  /* Color principal - Botones principales */
+  --ion-color-primary: #ffc482;
+  --ion-color-primary-rgb: 255, 196, 130;
+  --ion-color-primary-contrast: #333;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #e6af73;
+  --ion-color-primary-tint: #ffd69c;
+
+  /* Color secundario - Botones secundarios, íconos */
+  --ion-color-secondary: #ffe2b9;
+  --ion-color-secondary-rgb: 255, 226, 185;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #e6cc9f;
+  --ion-color-secondary-tint: #ffe9c5;
+
+  /* Color de fondo - Fondos generales de la app */
+  --ion-color-background: #fff6eb;
+  --ion-color-background-rgb: 255, 246, 235;
+  --ion-color-background-contrast: #000000;
+  --ion-color-background-contrast-rgb: 0, 0, 0;
+  --ion-color-background-shade: #e6dccf;
+  --ion-color-background-tint: #fff7ef;
+
+  /* Color de la toolbar - Barra superior */
+  --ion-color-toolbar: #ffdfc1;
+  --ion-color-toolbar-rgb: 255, 223, 193;
+  --ion-color-toolbar-contrast: #000000;
+  --ion-color-toolbar-contrast-rgb: 0, 0, 0;
+  --ion-color-toolbar-shade: #e6c6ab;
+  --ion-color-toolbar-tint: #ffe3c9;
+
+  /* Color de input - Campos de entrada */
+  --ion-color-input: #fff0d9;
+  --ion-color-input-rgb: 255, 240, 217;
+  --ion-color-input-contrast: #000000;
+  --ion-color-input-contrast-rgb: 0, 0, 0;
+  --ion-color-input-shade: #e6d6bf;
+  --ion-color-input-tint: #fff2e0;
+
+  /* Color de contraste - Texto principal */
+  --ion-color-contrast: #5c5c5c;
+  --ion-color-contrast-rgb: 92, 92, 92;
+  --ion-color-contrast-contrast: #ffffff;
+  --ion-color-contrast-contrast-rgb: 255, 255, 255;
+  --ion-color-contrast-shade: #515151;
+  --ion-color-contrast-tint: #666666;
+}
+
+.ion-color-primary {
+  --ion-color-base: var(--ion-color-primary);
+  --ion-color-base-rgb: var(--ion-color-primary-rgb);
+  --ion-color-contrast: var(--ion-color-primary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-primary-shade);
+  --ion-color-tint: var(--ion-color-primary-tint);
+}
+
+.ion-color-secondary {
+  --ion-color-base: var(--ion-color-secondary);
+  --ion-color-base-rgb: var(--ion-color-secondary-rgb);
+  --ion-color-contrast: var(--ion-color-secondary-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb);
+  --ion-color-shade: var(--ion-color-secondary-shade);
+  --ion-color-tint: var(--ion-color-secondary-tint);
+}
+
+.ion-color-background {
+  --ion-color-base: var(--ion-color-background);
+  --ion-color-base-rgb: var(--ion-color-background-rgb);
+  --ion-color-contrast: var(--ion-color-background-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-background-contrast-rgb);
+  --ion-color-shade: var(--ion-color-background-shade);
+  --ion-color-tint: var(--ion-color-background-tint);
+}
+
+.ion-color-toolbar {
+  --ion-color-base: var(--ion-color-toolbar);
+  --ion-color-base-rgb: var(--ion-color-toolbar-rgb);
+  --ion-color-contrast: var(--ion-color-toolbar-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-toolbar-contrast-rgb);
+  --ion-color-shade: var(--ion-color-toolbar-shade);
+  --ion-color-tint: var(--ion-color-toolbar-tint);
+}
+
+.ion-color-input {
+  --ion-color-base: var(--ion-color-input);
+  --ion-color-base-rgb: var(--ion-color-input-rgb);
+  --ion-color-contrast: var(--ion-color-input-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-input-contrast-rgb);
+  --ion-color-shade: var(--ion-color-input-shade);
+  --ion-color-tint: var(--ion-color-input-tint);
+}
+
+.ion-color-contrast {
+  --ion-color-base: var(--ion-color-contrast);
+  --ion-color-base-rgb: var(--ion-color-contrast-rgb);
+  --ion-color-contrast: var(--ion-color-contrast-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-contrast-contrast-rgb);
+  --ion-color-shade: var(--ion-color-contrast-shade);
+  --ion-color-tint: var(--ion-color-contrast-tint);
+}
+
+$default: "Nunito";
+$medium: "NunitoMedium";
+$bold: "NunitoBold";

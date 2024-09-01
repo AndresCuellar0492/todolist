@@ -1,0 +1,54 @@
+.doggy-alert {
+  background-color: transparent;
+
+  .alert-head {
+    background-color: var(--ion-color-primary);
+  }
+
+  .alert-title {
+    color: var(--ion-color-contrast);
+    font-size: 1.125rem;
+    line-height: 1.2;
+    font-weight: 500;
+    font-family: $medium;
+  }
+
+  .alert-message {
+    color: var(--ion-color-contrast);
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: normal;
+    font-family: $default;
+    padding: 10% !important;
+  }
+
+  .alert-button-group {
+    background-color: var(--ion-color-secondary);
+    flex-wrap: nowrap;
+  }
+
+  .alert-button {
+    color: var(--ion-color-contrast);
+    font-size: 0.8em;
+    line-height: 1.25;
+    border-color: transparent;
+    font-family: $bold;
+    text-align: center;
+    width: 50%;
+  }
+
+  .alert-button-inner {
+    font-weight: 500;
+    justify-content: center;
+  }
+
+  .alert-wrapper {
+    border-radius: 10px;
+  }
+
+  .normal-font-weight {
+    .alert-button-inner {
+      font-weight: 400;
+    }
+  }
+}

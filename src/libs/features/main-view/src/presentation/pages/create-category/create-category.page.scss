@@ -1,0 +1,9 @@
+@import "src/global.scss";
+
+ion-toolbar {
+  font-family: $bold !important;
+  color: black;
+}
+ion-content {
+  font-family: $bold;
+}

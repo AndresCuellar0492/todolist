@@ -1,0 +1,26 @@
+@import "src/global.scss";
+
+ion-footer {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-light);
+  font-family: $bold;
+}
+
+ion-input {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark);
+  font-family: $bold;
+  --background: transparent;
+}
+
+ion-searchbar.custom {
+  //margin-top: 10px;
+  --background: var(--ion-color-input);
+  --color: black;
+  --placeholder-color: black;
+  --icon-color: black;
+  --clear-button-color: #4b4545;
+  --border-radius: 4px;
+  font-family: $default;
+  text-align: center;
+}

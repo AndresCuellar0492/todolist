@@ -1,0 +1,14 @@
+<div class="contenSlides">
+  <swiper-container
+    (afterinit)="swiperReady()"
+    (swiperslidechange)="swiperSlideChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+    #swiper
+    [modules]="swiperModules"
+  >
+    <swiper-slide *ngFor="let image of imagesData">
+      <img class="image" [src]="getImage(image)" alt="" />
+    </swiper-slide>
+  </swiper-container>
+</div>

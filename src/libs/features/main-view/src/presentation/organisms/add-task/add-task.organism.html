@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Crear tarea</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onAddTask()" [strong]="true">Guardar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-textarea
+      [(ngModel)]="task"
+      placeholder="Enter more information here..."
+      class="task"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-select
+      label="Selecciona categoria"
+      label-placement="floating"
+      [(ngModel)]="category"
+    >
+      <ion-select-option *ngFor="let item of categories" [value]="item"
+        >{{item.name}}</ion-select-option
+      >
+    </ion-select>
+    <ion-button fill="clear">
+      <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>

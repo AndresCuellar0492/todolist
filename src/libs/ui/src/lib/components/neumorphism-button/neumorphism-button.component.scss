@@ -1,0 +1,49 @@
+@import "src/global.scss";
+$bg-color: #f0f0f3;
+$shadow-dark: #bebebe;
+$shadow-light: #ffffff;
+
+.neumorphism-button {
+  max-width: 80%;
+  height: 48px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: $bg-color;
+  box-shadow: 8px 8px 16px $shadow-dark, -8px -8px 16px $shadow-light;
+  font-family: $medium; // Asegúrate de tener esta variable definida
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 6px 6px 12px $shadow-dark, -6px -6px 12px $shadow-light;
+  }
+
+  &:active {
+    box-shadow: inset 4px 4px 8px $shadow-dark,
+      inset -4px -4px 8px $shadow-light;
+    transform: scale(0.98); /* Leve reducción para dar sensación de presión */
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 4px 4px 8px $shadow-dark,
+      inset -4px -4px 8px $shadow-light;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  .icon {
+    margin-left: auto;
+    font-size: 18px;
+  }
+}

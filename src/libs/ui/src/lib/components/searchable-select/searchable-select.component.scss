@@ -1,0 +1,58 @@
+@import "src/global.scss";
+
+ion-toolbar {
+  font-family: $default;
+}
+
+ion-title {
+  text-align: center;
+  font-size: 1.8vh;
+}
+
+ion-searchbar.custom {
+  margin-top: 10px;
+  --background: var(--ion-color-input);
+  --color: black;
+  --placeholder-color: #fff;
+  --icon-color: black;
+  --clear-button-color: #4b4545;
+  --border-radius: 4px;
+  font-family: $default;
+}
+
+.label {
+  font-family: $medium;
+  text-transform: lowercase;
+}
+
+.label::first-letter {
+  text-transform: uppercase;
+}
+
+/* ion-searchbar.ios.custom {
+  --cancel-button-color: #867f7f;
+}
+
+ion-searchbar.md.custom {
+  --cancel-button-color: #867f7f;
+} */
+
+ion-radio {
+  --border-radius: 4px;
+  --inner-border-radius: 4px;
+
+  --color: #ddd;
+  --color-checked: #6815ec;
+}
+
+ion-radio.ios::part(container) {
+  width: 20px;
+  height: 20px;
+
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.radio-checked.ios::part(container) {
+  border-color: #6815ec;
+}

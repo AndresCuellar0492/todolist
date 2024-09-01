@@ -1,0 +1,40 @@
+<ion-modal [isOpen]="isOpen" [backdropDismiss]="false">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">
+            <ion-icon slot="start" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>{{ title }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="clearSelection()">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-toolbar>
+        <ion-searchbar
+          mode="ios"
+          animated="true"
+          (ionInput)="filter($event)"
+          placeholder=""
+          class="custom"
+        ></ion-searchbar>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-radio-group
+        [(ngModel)]="selected"
+        (ionChange)="itemSelected($event)"
+      >
+        <ion-item *ngFor="let item of filtered" class="item-select">
+          <ion-radio slot="start" [value]="item"></ion-radio>
+          <ion-label class="label">{{ leaf(item) }}</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-content>
+  </ng-template>
+</ion-modal>

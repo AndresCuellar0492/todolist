@@ -1,0 +1,128 @@
+{
+  "title": "Home Page Welcomeeeeee",
+  "description": "Welcome to our Home!",
+  "pages": {
+    "create-post": {
+      "form-register": {
+        "controls": {
+          "name": {
+            "label": "Nombre de tu mascota",
+            "placeholder": "Ingresar nombre de tu mascota"
+          },
+          "description": {
+            "label": "Descripción y datos a tener en cuenta",
+            "placeholder": "Mmmmmmm"
+          },
+          "phone_contact": {
+            "label": "Teléfono",
+            "placeholder": "Ingresar número telefónico"
+          },
+          "image": {
+            "label": "Agregar foto"
+          },
+          "municipality_id": {
+            "label": "Selecciona municipio"
+          },
+          "found_pet": {
+            "label": "Mascota encontrada"
+          },
+          "size_id": {
+            "label": "Tamaño",
+            "placeholder": "Seleccionar tamaño"
+          },
+          "breed_id": {
+            "label": "Raza",
+            "placeholder": "Seleccionar raza"
+          },
+          "color_id": {
+            "label": "Color",
+            "placeholder": "Seleccionar color"
+          },
+          "sex_id": {
+            "label": "Sexo",
+            "placeholder": "Seleccionar sexo"
+          },
+          "age_id": {
+            "label": "Edad",
+            "placeholder": "Seleccionar rango de edad"
+          },
+          "animal_type_id": {
+            "label": "Tipo",
+            "placeholder": "Seleccionar tipo"
+          },
+          "terms-conditions": {
+            "accept": "Acepto",
+            "conditions": "términos y condiciones"
+          },
+          "province_id": {
+            "label": "Selecciona departamento"
+          }
+        },
+        "messages-validate": {
+          "name": [
+            { "type": "required", "message": "El nombre es requerido." },
+            {
+              "type": "pattern",
+              "message": "Ingresa solo letras sin acentos y/o caracteres especiales."
+            }
+          ],
+          "description": [
+            { "type": "required", "message": "La descripción es requerida" },
+            {
+              "type": "pattern",
+              "message": "Ingresa solo letras sin acentos y/o caracteres especiales."
+            }
+          ],
+          "phone_contact": [
+            { "type": "required", "message": "El teléfono es requerido." },
+            {
+              "type": "minlength",
+              "message": "Teléfono: mínimo 10 caracteres."
+            },
+            {
+              "type": "maxlength",
+              "message": "Teléfono: máximo 10 caracteres."
+            },
+            { "type": "pattern", "message": "Ingresa un teléfono válido." }
+          ],
+          "image": [{ "type": "required", "message": "Imagen es requerida." }],
+          "municipality_id": [
+            { "type": "required", "message": "Municipio es requerido." }
+          ],
+          "size_id": [
+            { "type": "required", "message": "Tamaño es requerido." }
+          ],
+          "breed_id": [{ "type": "required", "message": "Raza es requerida." }],
+          "color_id": [
+            { "type": "required", "message": "Color es requerido." }
+          ],
+          "sex_id": [{ "type": "required", "message": "Sexo es requerido." }],
+          "age_id": [{ "type": "required", "message": "Edad es requerida." }],
+          "animal_type_id": [
+            { "type": "required", "message": "Tipo es requerido." }
+          ],
+          "termsConditions": [
+            {
+              "type": "required",
+              "message": "Es necesario aceptar terminos y condiciones."
+            }
+          ],
+          "province": [
+            { "type": "required", "message": "Departamento es requerido." }
+          ]
+        },
+        "btn-create": "Publicar"
+      }
+    },
+    "detail-post": {
+      "icon-dog": "assets/images/icons/dog.png",
+      "icon-cat": "assets/images/icons/cat.png",
+      "icon-femenine": "assets/images/icons/femenine.png",
+      "icon-male": "assets/images/icons/male.png",
+      "breed": "Raza",
+      "age": "Edad",
+      "color": "Color de piel",
+      "size": "Tamaño"
+    }
+  }
+}
