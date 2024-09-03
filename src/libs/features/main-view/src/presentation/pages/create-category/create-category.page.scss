@@ -1,9 +1,18 @@
-@import "src/global.scss";
+@import "src/theme/variables.scss";
 
 ion-toolbar {
   font-family: $bold !important;
   color: black;
 }
-ion-content {
-  font-family: $bold;
+
+.category {
+  height: 7vh;
+  &__input {
+    font-family: $medium !important;
+  }
+}
+
+.list-categories {
+  height: 50vh;
+  overflow: hidden;
 }

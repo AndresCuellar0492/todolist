@@ -1,8 +1,8 @@
-export class Task {
-  constructor(
-    public id: string,
-    public title: string,
-    public completed: boolean,
-    public categoryId: string | null = null // Puede ser nulo si no tiene categoría asignada
-  ) {}
+import { Category } from './category.entity';
+
+export interface Task {
+  id: string;
+  description: string;
+  completed: boolean;
+  category?: Category;
 }

@@ -1,1 +1,9 @@
-{}
+{
+  "modals": {
+    "welcome": {
+      "image": "assets/images/task_image.png",
+      "title": "¡Bienvenid@ a TO-DO LIST la app que hará de tus tareas una mejor experiencia!.",
+      "button": "Gracias :)"
+    }
+  }
+}

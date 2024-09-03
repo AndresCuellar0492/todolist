@@ -39,18 +39,7 @@
 @import "theme/toast";
 @import "theme/variables";
 @import "theme/animation";
-@import "theme/alerts";
-@import "theme/toolbar";
-
-// Otros estilos globales
-body {
-  font-family: $default;
-  --webkit-transform: translate3d(0, 0, 0);
-  --webkit-transform-style: preserve-3d;
-  --webkit-transform: translateZ(0);
-  --webkit-perspective: 1000;
-  --webkit-backface-visibility: hidden;
-}
+@import "theme/alerts.scss";
 
 /**
  * Ionic Dark Mode
@@ -71,7 +60,6 @@ body {
   font-size: var(--font-size-base);
 } */
 
-/* Declaración de Nunito_Sans */
 @font-face {
   font-family: "Nunito";
   font-style: normal;
@@ -80,7 +68,6 @@ body {
     format("truetype");
 }
 
-/* Declaración de Montserrat Medium */
 @font-face {
   font-family: "NunitoMedium";
   font-style: normal;
@@ -89,7 +76,6 @@ body {
     format("truetype");
 }
 
-/* Declaración de Montserrat Bold */
 @font-face {
   font-family: "NunitoBold";
   font-style: normal;
@@ -155,15 +141,6 @@ ion-input {
   font-size: 16px !important;
 }
 
-/* .modal {
-  &--transparent {
-    --background: white;
-  }
-  .modal-wrapper {
-    background: var(--background);
-  }
-} */
-
 .button-custom {
   --border-radius: 5px !important;
   height: 48px;
@@ -174,12 +151,51 @@ ion-input {
 
 //ANIMATIONS
 
-/* .scroll-content {
-  padding-bottom: 0 !important;
-} */
-
 .modal {
   &--transparent {
     --background: rgba(243, 238, 238, 0.902);
+  }
+}
+
+.customA {
+  .alert-wrapper {
+    font-size: 1.1em !important;
+  }
+  .alert-head {
+    background-color: #469323;
+  }
+
+  .alert-title {
+    text-align: center !important;
+    font-family: nunito;
+    color: white;
+  }
+
+  .alert-message {
+    text-align: center !important;
+    font-family: nunitoLight;
+    color: rgb(85, 83, 83);
+    padding: 10%;
+    font-weight: bold;
+  }
+
+  .alert-button {
+    text-align: left !important;
+    background-color: transparent;
+    font-family: nunitoLight;
+    color: white !important;
+    font-weight: bold;
+  }
+
+  button.alert-button:nth-child(1) {
+    background-color: #a10713 !important;
+  }
+
+  button.alert-button:nth-child(2) {
+    background-color: #a10713 !important;
+  }
+  .alert-radio {
+    font-family: nunitoLight;
+    font-weight: bold;
   }
 }

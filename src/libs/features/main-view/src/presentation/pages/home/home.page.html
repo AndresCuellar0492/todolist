@@ -1,76 +1,56 @@
-<!-- <ion-header>
+<ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
-    <ion-title>Tareas</ion-title>
+    <ion-title>{{'pages.home.title' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
- -->
+
 <ion-content class="ion-padding">
   <ion-row>
-    <ion-col size="12">
-      <ion-item lines="none" (click)="selectCategories.open()">
-        <ion-searchbar
-          class="custom"
-          [debounce]="250"
-          [placeholder]="getTextSearch()"
-          [ariaReadOnly]="true"
-        ></ion-searchbar>
-        <!--  <ion-icon aria-hidden="true" name="options" slot="end"></ion-icon>
-        <ion-label>{{selectedCategory?.name}}</ion-label> -->
-      </ion-item></ion-col
-    >
-    <!--     <ion-col size="3.5" style="display: flex; align-items: center; width: 100%">
-      <ion-button
-        (click)="openCreateCategory()"
-        fill="clear"
-        style="font-size: 1.2vh"
-      >
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-        Crear categoria
+    <ion-col size="10.5">
+      <ion-searchbar
+        (click)="selectCategories.open()"
+        class="custom"
+        [debounce]="250"
+        [placeholder]="getTextSearch()"
+        [ariaReadOnly]="true"
+        [showClearButton]="true"
+      ></ion-searchbar>
+    </ion-col>
+
+    <ion-col size="1.5" class="ion-align-self-center">
+      <ion-button (click)="clearSelection()" color="danger" fill="clear">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
-    </ion-col> -->
+    </ion-col>
   </ion-row>
-
-  <!--   <app-category-filter
-    [categories]="categories"
-    [selectedCategoryId]="selectedCategoryId"
-    (categorySelected)="onCategorySelected($event)"
-  ></app-category-filter>
- -->
-
-  <!--   {{'Categoria seleccionada es: '+ selectedCategory?.name ?? ''}} -->
 
   <ion-list>
     <app-task-item
       *ngFor="let task of tasks"
       [task]="task"
-      (complete)="onCompleteTask(task.id)"
+      (detailTask)="goToDetailTask(true, task)"
+      (updateTask)="onUpdateTask(task)"
       (delete)="onDeleteTask(task.id)"
     ></app-task-item>
+    <p class="sub-title ion-padding" *ngIf="!hasTasks">
+      {{'pages.home.no-tasks' | translate}}
+    </p>
   </ion-list>
 </ion-content>
 
-<!-- <ion-footer>
-  <ion-toolbar>
-    <ion-item>
-      <ion-input
-        [(ngModel)]="newTaskTitle"
-        placeholder="Nueva tarea"
-      ></ion-input>
-      <ion-button (click)="onAddTask(newTaskTitle)">
-        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-toolbar>
-</ion-footer> -->
-
-<ion-fab slot="fixed" vertical="bottom" horizontal="center" (click)="addTask()">
+<ion-fab
+  slot="fixed"
+  vertical="bottom"
+  horizontal="center"
+  (click)="goToDetailTask()"
+>
   <ion-fab-button>
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
 <app-searchable-select
-  title="Seleccciona una categoria"
+  title=" {{'pages.home.label-select-category' | translate}}"
   itemTextField="name"
   (selectedChanged)="selectedChanged($event)"
   [data]="categories"

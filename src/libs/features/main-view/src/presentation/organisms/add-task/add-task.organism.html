@@ -1,36 +1,56 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header class="ion-no-border" mode="md">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="close()">Cancelar</ion-button>
+      <ion-button (click)="close()"
+        >{{'organisms.add-task.btn-cancel' | translate}}</ion-button
+      >
     </ion-buttons>
-    <ion-title>Crear tarea</ion-title>
+    <ion-title></ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onAddTask()" [strong]="true">Guardar</ion-button>
+      <ion-button
+        (click)="isModeEdit ? onUpdateTask() : onAddTask() "
+        [strong]="true"
+        >{{'organisms.add-task.btn-save' | translate}}</ion-button
+      >
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <h3>{{'organisms.add-task.title' | translate}}</h3>
   <ion-item>
     <ion-textarea
-      [(ngModel)]="task"
-      placeholder="Enter more information here..."
+      [(ngModel)]="taskDescription"
+      placeholder="{{'organisms.add-task.placeholder-add-task' | translate}}"
       class="task"
     ></ion-textarea>
   </ion-item>
 
   <ion-item>
-    <ion-select
-      label="Selecciona categoria"
-      label-placement="floating"
-      [(ngModel)]="category"
-    >
-      <ion-select-option *ngFor="let item of categories" [value]="item"
-        >{{item.name}}</ion-select-option
+    <ng-container *ngIf="isModeEdit; else notEditMode">
+      <ion-select
+        label="{{'organisms.add-task.label-select-category' | translate}}"
+        label-placement="floating"
+        [(ngModel)]="category.id"
+        class="select"
+        color="primary"
       >
-    </ion-select>
-    <ion-button fill="clear">
-      <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
-    </ion-button>
+        <ion-select-option *ngFor="let item of categories" [value]="item.id">
+          {{ item.name }}
+        </ion-select-option>
+      </ion-select>
+    </ng-container>
+
+    <ng-template #notEditMode>
+      <ion-select
+        label="{{'organisms.add-task.label-select-category' | translate}}"
+        label-placement="floating"
+        [(ngModel)]="category"
+      >
+        <ion-select-option *ngFor="let item of categories" [value]="item">
+          {{ item.name }}
+        </ion-select-option>
+      </ion-select>
+    </ng-template>
   </ion-item>
 </ion-content>

@@ -1,0 +1,18 @@
+<ion-content>
+  <div class="container">
+    <div class="card">
+      <br />
+      <img [src]="image" alt="" />
+      <br />
+      <div class="email-title body-text" [innerHTML]="title"></div>
+      <br />
+
+      <div class="content-btn" (click)="closeModal()">
+        <ion-button class="button-custom" size="small" color="primary">
+          {{ button }}
+        </ion-button>
+      </div>
+      <br />
+    </div>
+  </div>
+</ion-content>

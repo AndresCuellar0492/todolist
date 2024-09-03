@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195440248593",
+    "project_id": "todolist-5a8b8",
+    "storage_bucket": "todolist-5a8b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195440248593:android:377232755a260926d0aeb0",
+        "android_client_info": {
+          "package_name": "com.todolist.nequi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6KThnEvy0Dw-0Q7SShhBkerJroZXpL-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

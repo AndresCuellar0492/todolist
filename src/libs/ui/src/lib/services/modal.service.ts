@@ -1,9 +1,9 @@
 import { Injectable, Type } from '@angular/core';
 import { ModalController, Platform } from '@ionic/angular';
+import { ModalProps } from './../organisms/modal-props.interface';
 
 import { OverlayEventDetail } from '@ionic/core';
 import { Subscription } from 'rxjs';
-import { ModalProps } from '../organisms/modal-props.interface';
 
 @Injectable({
   providedIn: 'root',

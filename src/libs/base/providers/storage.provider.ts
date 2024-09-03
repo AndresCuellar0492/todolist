@@ -1,13 +1,5 @@
 export abstract class StorageProvider {
-  // Establecer un valor en el almacenamiento
-  abstract set(key: string, value: string): Promise<void>;
-
-  // Obtener un valor del almacenamiento
-  abstract get(key: string): Promise<string | null>;
-
-  // Eliminar un valor del almacenamiento
-  abstract remove(key: string): Promise<void>;
-
-  // Limpiar todo el almacenamiento
-  abstract clear(): Promise<void>;
+  abstract setItem(key: string, value: any): void;
+  abstract getItem<T>(key: string): T | null;
+  abstract removeItem(key: string): void;
 }

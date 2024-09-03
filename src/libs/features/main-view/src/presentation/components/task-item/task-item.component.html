@@ -1,13 +1,24 @@
-<ion-item>
+<ion-item [button]="true" detail="false" class="task">
+  <ion-button fill="clear" (click)="onComplete($event)">
+    <ion-icon
+      color="tertiary"
+      slot="start"
+      [name]="task.completed ? 'checkmark-circle' : 'radio-button-off'"
+      size="small"
+    ></ion-icon>
+  </ion-button>
   <ion-label [class.completed]="task.completed">
-    {{ task.title }}
+    <p class="task__category">{{ task.category?.name }}</p>
+    <br />
+    <ion-text class="task__description">{{ task.description }}</ion-text
+    ><br />
   </ion-label>
   <ion-buttons slot="end">
-    <ion-button (click)="onComplete()" [disabled]="task.completed">
-      <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
+    <ion-button color="warning" (click)="goToDetailTask($event)">
+      <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
     </ion-button>
     <ion-button color="danger" (click)="onDelete()">
-      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      <ion-icon size="small" slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-item>

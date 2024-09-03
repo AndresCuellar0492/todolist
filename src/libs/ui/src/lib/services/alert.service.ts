@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AlertButton, AlertController, Platform } from '@ionic/angular';
+import {
+  AlertButton,
+  AlertController,
+  AlertInput,
+  Platform,
+} from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 export interface AlertHandler {
-  accept?: () => void;
+  accept?: (data?: any) => void;
   cancel?: () => void;
 }
 
@@ -21,24 +26,26 @@ export interface AlertMessage {
 export interface AlertParameters {
   texts: AlertMessage;
   handlers?: AlertHandler;
+  inputs?: AlertInput[]; // Agregar la opción para inputs
   backdropDismiss?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
-  public cssClass = 'doggy-alert';
+  public cssClass = 'todo-alert';
 
   private subscription!: Subscription;
   private alertList: HTMLIonAlertElement[] = [];
 
   constructor(
     private alertController: AlertController,
-    private platform: Platform,
+    private platform: Platform
   ) {}
 
   public async show({
     texts,
     handlers,
+    inputs,
     backdropDismiss = true,
   }: AlertParameters): Promise<void> {
     const { accept = '', cancel } = texts?.buttons || {};
@@ -47,7 +54,11 @@ export class AlertService {
     const buttons: AlertButton[] = [
       {
         text: accept,
-        handler: handlers?.accept,
+        handler: (data) => {
+          if (handlers?.accept) {
+            handlers.accept(data);
+          }
+        },
       },
     ];
 
@@ -58,11 +69,12 @@ export class AlertService {
       });
     }
 
-    // Creación de la alerta
+    // Creación de la alerta con inputs dinámicos
     const alert = await this.alertController.create({
       header: texts?.header,
       cssClass: this.cssClass,
       message: texts?.message,
+      inputs: inputs || [], // Agregar inputs a la alerta
       buttons,
       backdropDismiss,
       mode: 'md',
@@ -133,7 +145,7 @@ export class AlertService {
 
   private handleBackButtonAction(
     messages: AlertMessage,
-    handlers?: AlertHandler,
+    handlers?: AlertHandler
   ) {
     if (handlers?.accept || handlers?.cancel) {
       this.subscription = this.platform.backButton.subscribeWithPriority(
@@ -146,7 +158,7 @@ export class AlertService {
           }
 
           processNextHandler();
-        },
+        }
       );
     }
   }

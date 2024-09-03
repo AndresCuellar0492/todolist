@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from '@libs/ui/src/lib/services/toast.service';
 import { GetCategoriesService } from '../../../core/services/get-categories.service';
-import { AddCategoryUseCase } from '../../../domain/usecases/add-category.usecase';
+import { Category } from '../../../domain/entities/category.entity';
+import { GetCategoriesUseCase } from '../../../domain/usecases/get-categories.usecase';
+import { ManageCategoriesService } from '../../services/manage-categories.service';
 
 @Component({
   selector: 'app-create-category',
@@ -9,30 +10,28 @@ import { AddCategoryUseCase } from '../../../domain/usecases/add-category.usecas
   styleUrls: ['./create-category.page.scss'],
 })
 export class CreateCategoryPage implements OnInit {
-  public category: string = '';
+  public categoryLocal: Category = { id: '', name: '' };
+  public categories!: Category[];
 
   constructor(
-    private addCategoryUseCase: AddCategoryUseCase,
-    private toastService: ToastService,
-    private getCategoriesService: GetCategoriesService
+    private getCategoriesService: GetCategoriesService,
+    private getCategoriesUseCase: GetCategoriesUseCase,
+    private manageCategoriesService: ManageCategoriesService
   ) {}
 
   ngOnInit() {
-    console.log();
+    this.getCategories();
+    this.getCategoriesService.subscribe(() => {
+      this.getCategories();
+      this.categoryLocal = { id: '', name: '' };
+    });
   }
 
-  async createCategory() {
-    if (this.category.trim() === '') {
-      return;
-    }
+  public createCategoryService() {
+    this.manageCategoriesService.createCategory(this.categoryLocal);
+  }
 
-    try {
-      await this.addCategoryUseCase.execute(this.category);
-      this.toastService.showSuccess('Categoría creada con exito');
-      this.category = '';
-      this.getCategoriesService.emit();
-    } catch (error) {
-      this.toastService.showError();
-    }
+  async getCategories() {
+    this.categories = await this.getCategoriesUseCase.execute();
   }
 }

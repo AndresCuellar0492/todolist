@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
-  /*   {
-    path: 'main-view',
-    loadChildren: () => import('../libs/features/main-view/main-view.module').then( m => m.MainViewPageModule)
-  } */
 ];
 @NgModule({
   imports: [

@@ -1,44 +1,52 @@
 import { Injectable } from '@angular/core';
-import { StorageService } from '../../core/services/storage.service';
+import { StorageProvider } from '@libs/base/providers/storage.provider';
+import { MainViewConfig } from '@libs/features/main-view/main-view.config';
 import { Task } from '../../domain/entities/task.entity';
 import { TaskRepository } from '../../domain/repositories/task.repository';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskRepositoryImpl implements TaskRepository {
-  private readonly storageKey = 'tasks';
+  private readonly storageKey = MainViewConfig.storage.tasksKey;
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageProvider: StorageProvider) {}
 
   async addTask(task: Task): Promise<void> {
+    const randomFactor = Math.floor(Math.random() * 1000);
+    const nextId = task.description.length + 1 + randomFactor;
+    task.id = nextId.toString();
     const tasks = await this.getTasks();
     tasks.push(task);
-    this.storageService.setItem(this.storageKey, tasks);
+    this.storageProvider.setItem(this.storageKey, tasks);
   }
 
-  async completeTask(taskId: string): Promise<void> {
+  async updateTask(taskItem: Task): Promise<void> {
     const tasks = await this.getTasks();
-    const task = tasks.find(t => t.id === taskId);
-    if (task) {
-      task.completed = true;
-      this.storageService.setItem(this.storageKey, tasks);
+
+    const taskIndex = tasks.findIndex((task) => task.id === taskItem.id);
+    if (taskIndex !== -1) {
+      tasks[taskIndex] = taskItem;
+      this.storageProvider.setItem(this.storageKey, tasks);
     }
+  }
+
+  async refreshTasks(tasks: Task[]): Promise<void> {
+    this.storageProvider.setItem(this.storageKey, tasks);
   }
 
   async deleteTask(taskId: string): Promise<void> {
     let tasks = await this.getTasks();
-    tasks = tasks.filter(t => t.id !== taskId);
-    this.storageService.setItem(this.storageKey, tasks);
+    tasks = tasks.filter((t) => t.id !== taskId);
+    this.storageProvider.setItem(this.storageKey, tasks);
   }
 
   async getTasks(): Promise<Task[]> {
-    return this.storageService.getItem<Task[]>(this.storageKey) || [];
+    return this.storageProvider.getItem<Task[]>(this.storageKey) || [];
   }
 
   async getTasksByCategory(categoryId: string): Promise<Task[]> {
     const tasks = await this.getTasks();
-    return tasks.filter(t => t.categoryId === categoryId);
+    return tasks.filter((t) => t?.category?.id === categoryId);
   }
 }

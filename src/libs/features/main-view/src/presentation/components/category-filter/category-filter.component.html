@@ -1,9 +1,0 @@
-<ion-segment
-  [(ngModel)]="selectedCategoryId"
-  (ionChange)="onCategoryChange($event.detail.value)"
->
-  <ion-segment-button value="null"> Todas </ion-segment-button>
-  <ion-segment-button *ngFor="let category of categories" [value]="category.id">
-    {{ category.name }}
-  </ion-segment-button>
-</ion-segment>

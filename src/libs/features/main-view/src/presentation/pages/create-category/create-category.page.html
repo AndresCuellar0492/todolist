@@ -1,25 +1,38 @@
 <ion-header class="ion-no-border" mode="md">
   <ion-toolbar>
-    <ion-title>Crear categoría</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="createCategory()">
-        <ion-icon slot="icon-only" name="save"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title>{{'pages.create-category.title' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <app-ghost [height]="'5vh'"></app-ghost>
-  <ion-item>
-    <ion-input
-      appPreventWhitespace
-      maxlength="20"
-      minlength="1"
-      label="Ingresa categoría"
-      required="true"
-      [counter]="20"
-      [(ngModel)]="category"
-    ></ion-input>
-  </ion-item>
+  <ion-row>
+    <ion-col size="10">
+      <ion-item class="category">
+        <ion-input
+          class="category__input"
+          appPreventWhitespace
+          maxlength="20"
+          minlength="1"
+          label="{{'pages.create-category.label' | translate}}"
+          required="true"
+          [counter]="20"
+          [(ngModel)]="categoryLocal.name"
+          placeholder="{{'pages.create-category.placeholder' | translate}}"
+          labelPlacement="stacked"
+        ></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button (click)="createCategoryService()" fill="clear">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <app-ghost [height]="'5vh'"></app-ghost>
+
+  <div class="list-categories">
+    <app-category-item [categories]="categories"></app-category-item>
+  </div>
 </ion-content>

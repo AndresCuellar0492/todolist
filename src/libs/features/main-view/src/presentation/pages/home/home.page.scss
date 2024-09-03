@@ -1,9 +1,8 @@
-@import "src/global.scss";
+@import "src/theme/variables.scss";
 
-ion-footer {
-  --background: var(--ion-color-primary);
-  --color: var(--ion-color-light);
-  font-family: $bold;
+ion-toolbar {
+  font-family: $bold !important;
+  color: black;
 }
 
 ion-input {
@@ -14,7 +13,6 @@ ion-input {
 }
 
 ion-searchbar.custom {
-  //margin-top: 10px;
   --background: var(--ion-color-input);
   --color: black;
   --placeholder-color: black;
@@ -23,4 +21,8 @@ ion-searchbar.custom {
   --border-radius: 4px;
   font-family: $default;
   text-align: center;
+}
+
+h3 {
+  font-family: $bold;
 }

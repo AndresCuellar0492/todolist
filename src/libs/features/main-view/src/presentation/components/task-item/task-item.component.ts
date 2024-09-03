@@ -8,11 +8,18 @@ import { Task } from '../../../domain/entities/task.entity';
 })
 export class TaskItemComponent {
   @Input() task!: Task;
-  @Output() completed = new EventEmitter<void>();
+  @Output() updateTask = new EventEmitter<void>();
+  @Output() detailTask = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
 
-  onComplete() {
-    this.completed.emit();
+  onComplete(event: Event) {
+    event.stopPropagation();
+    this.updateTask.emit();
+  }
+
+  goToDetailTask(event: Event) {
+    event.stopPropagation();
+    this.detailTask.emit();
   }
 
   onDelete() {

@@ -1,18 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SearchableSelectComponent } from '@libs/ui/src/lib/components/searchable-select/searchable-select.component';
 import { ModalService } from '@libs/ui/src/lib/services/modal.service';
+
+import { I18nConfig } from '@libs/base/config/i18n.config';
+import { TranslateProvider } from '@libs/base/providers';
 import { SelectDynamicEntity } from '../../../core/entities/select-dynamic.entity';
 import { GetCategoriesService } from '../../../core/services/get-categories.service';
+import { GetTasksService } from '../../../core/services/get-tasks.service';
 import { Category } from '../../../domain/entities/category.entity';
 import { Task } from '../../../domain/entities/task.entity';
-import { AddCategoryUseCase } from '../../../domain/usecases/add-category.usecase';
-import { AddTaskUseCase } from '../../../domain/usecases/add-task.usecase';
-import { CompleteTaskUseCase } from '../../../domain/usecases/complete-task.usecase';
-import { DeleteCategoryUseCase } from '../../../domain/usecases/delete-category.usecase';
 import { DeleteTaskUseCase } from '../../../domain/usecases/delete-task.usecase';
 import { GetCategoriesUseCase } from '../../../domain/usecases/get-categories.usecase';
 import { GetTasksByCategoryUseCase } from '../../../domain/usecases/get-tasks-by-category.usecase';
+import { UpdateTaskUseCase } from '../../../domain/usecases/update-task.usecase';
 import { AddTaskOrganism } from '../../organisms/add-task/add-task.organism';
+import { HomeConfig } from './home.config';
 
 @Component({
   selector: 'app-main-view',
@@ -22,114 +24,104 @@ import { AddTaskOrganism } from '../../organisms/add-task/add-task.organism';
 export class HomePage implements OnInit {
   @ViewChild('selectCategories')
   selectCategories!: SearchableSelectComponent;
-  tasks: Task[] = []; // Lista de tareas
-  categories: Category[] = [
-    { id: '0', name: 'casa' },
-    { id: '1', name: 'trabajo' },
-  ]; // Lista de categorías
-  newTaskTitle: string = ''; // Título de la nueva tarea
+  tasks: Task[] = [];
+  categories: Category[] = [];
+  newTaskTitle: string = '';
   selectedCategory!: SelectDynamicEntity;
-  textDefaultSearch = 'Filtrar por categoria: ';
 
   constructor(
-    private addTaskUseCase: AddTaskUseCase,
-    private completeTaskUseCase: CompleteTaskUseCase,
+    private updateTaskUseCase: UpdateTaskUseCase,
     private getTasksByCategoryUseCase: GetTasksByCategoryUseCase,
     private getCategoriesUseCase: GetCategoriesUseCase,
     private deleteTaskUseCase: DeleteTaskUseCase,
-    private addCategoryUseCase: AddCategoryUseCase,
-    private deleteCategoryUseCase: DeleteCategoryUseCase,
     private modalService: ModalService,
-    private getCategoriesService: GetCategoriesService
+    private getCategoriesService: GetCategoriesService,
+    private getTasksService: GetTasksService,
+    private translateProvider: TranslateProvider
   ) {}
 
   async ngOnInit() {
-    // Cargar tareas y categorías al iniciar la página
-    this.tasks = await this.getTasksByCategoryUseCase.execute();
+    await this.translateProvider.loadModule(I18nConfig.modules.MAIN_VIEW);
+    this.loadGeneralData();
     this.getCategoriesService.subscribe(() => this.getCategories());
-    console.log(this.tasks);
+    this.getTasksService.subscribe(() => this.getTasksWithCategories());
+  }
+
+  private loadGeneralData() {
     this.getCategories();
+    this.getTasksWithCategories();
   }
 
-  public selectedChanged(item: SelectDynamicEntity) {
+  private async loadTasks(): Promise<void> {
+    this.tasks = await this.getTasksByCategoryUseCase.execute();
+  }
+
+  public async selectedChanged(item: SelectDynamicEntity) {
     this.selectedCategory = item;
-    if (this.selectedCategory.id) {
-    }
-  }
-
-  async onAddTask(title: string) {
-    // Añadir una nueva tarea
-    if (title.trim().length === 0) {
-      return; // Evitar añadir tareas sin título
-    }
-
-    const task = new Task(
-      Date.now().toString(),
-      title,
-      false,
-      this.selectedCategory?.id ?? ''
-    );
-    await this.addTaskUseCase.execute(task);
-    this.tasks = await this.getTasksByCategoryUseCase.execute();
-    this.newTaskTitle = ''; // Limpiar el input después de añadir la tarea
-  }
-
-  public async addTask() {
-    const modal = await this.modalService.show<AddTaskOrganism>(
-      AddTaskOrganism,
-      {
-        categories: this.categories,
-      }
-    );
-
-    const data = await modal.onDidDismiss();
-    console.log('Modal data:', data.data);
-  }
-
-  async onCompleteTask(taskId: string) {
-    // Completar una tarea
-    await this.completeTaskUseCase.execute(taskId);
-    this.tasks = await this.getTasksByCategoryUseCase.execute();
-  }
-
-  async onDeleteTask(taskId: string) {
-    // Eliminar una tarea
-    await this.deleteTaskUseCase.execute(taskId);
-    this.tasks = await this.getTasksByCategoryUseCase.execute();
-  }
-
-  async createCategory(category: string) {
-    // Eliminar una tarea
-    await this.addCategoryUseCase.execute(category);
-    this.categories = await this.getCategoriesUseCase.execute();
-  }
-
-  async deleteCategory(categoryId: string) {
-    // Eliminar una tarea
-    await this.deleteCategoryUseCase.execute(categoryId);
-    this.categories = await this.getCategoriesUseCase.execute();
-  }
-
-  getTextSearch() {
-    return this.selectedCategory?.name
-      ? this.textDefaultSearch + this.selectedCategory?.name
-      : this.textDefaultSearch;
-    //return this.selectedCategory?.name ?? ' ';
-  }
-
-  async getCategories() {
-    this.categories = await this.getCategoriesUseCase.execute();
-    console.log(this.categories);
-  }
-
-  private async filterTasksByCategory() {
-    // Filtrar las tareas según la categoría seleccionada
     if (this.selectedCategory.id) {
       this.tasks = await this.getTasksByCategoryUseCase.execute(
         this.selectedCategory.id
       );
-    } else {
-      this.tasks = await this.getTasksByCategoryUseCase.execute();
+      return;
     }
+
+    this.loadTasks();
+  }
+
+  public async goToDetailTask(isModeEdit = false, task?: Task) {
+    const modal = await this.modalService.show<AddTaskOrganism>(
+      AddTaskOrganism,
+      {
+        categories: this.categories,
+        isModeEdit,
+        task,
+      }
+    );
+
+    const data = await modal.onDidDismiss();
+  }
+
+  async onUpdateTask(task: Task) {
+    task.completed = !task.completed;
+    await this.updateTaskUseCase.execute(task);
+    this.loadTasks();
+  }
+
+  async onDeleteTask(taskId: string) {
+    await this.deleteTaskUseCase.execute(taskId);
+    this.loadTasks();
+  }
+
+  getTextSearch() {
+    const textDefaultSearch = this.translateProvider.get(
+      HomeConfig.i18n.page.filterText
+    );
+    return this.selectedCategory?.name
+      ? this.selectedCategory?.name
+      : textDefaultSearch;
+  }
+
+  async getCategories() {
+    this.categories = await this.getCategoriesUseCase.execute();
+  }
+
+  async getTasksWithCategories() {
+    this.tasks = [];
+    await this.loadTasks();
+
+    this.tasks.map((task) => {
+      const category = this.categories.find(
+        (cat) => cat.id === task?.category?.id
+      );
+      return { task, category };
+    });
+  }
+
+  public clearSelection() {
+    this.selectCategories.clearSelection();
+  }
+
+  public get hasTasks(): boolean {
+    return this.tasks.length > 0;
   }
 }

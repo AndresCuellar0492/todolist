@@ -1,0 +1,36 @@
+@import "src/theme/variables.scss";
+
+ion-content {
+  --background: transparent;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  .card {
+    margin-top: 15vh;
+    height: 55vh;
+    width: 80%;
+    padding: 10%;
+    text-align: center;
+    border-radius: 10px;
+    background: var(--ion-color-secondary);
+
+    img {
+      height: 23%;
+    }
+
+    .email-title {
+      height: 55%;
+      font-weight: bold;
+    }
+
+    .content-btn {
+      height: 10%;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import "src/theme/variables.scss";
+
+ion-list {
+  height: 100%;
+  overflow: auto;
+}
+ion-label {
+  font-family: $medium !important;
+}
+
+ion-item-option {
+  font-family: $default !important;
+}

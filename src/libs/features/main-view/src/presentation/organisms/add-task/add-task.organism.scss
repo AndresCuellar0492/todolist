@@ -1,3 +1,23 @@
+@import "src/theme/variables.scss";
+
+ion-toolbar {
+  font-family: $bold !important;
+  color: black;
+}
+
+ion-item {
+  font-family: $medium !important;
+}
+
+::ng-deep {
+  .select {
+    .alert-head {
+      font-family: $medium !important;
+      background: red;
+    }
+  }
+}
+
 .task {
   min-height: 10vh;
   height: auto;

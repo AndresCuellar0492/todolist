@@ -7,8 +7,6 @@ export const I18nConfig = Object.freeze({
   modules: {
     DEFAULT: 'default',
     MAIN_VIEW: 'main-view',
-    AUTH: 'auth',
-    DETAIL: 'detail',
-    COMMONS: 'commons',
+    TABS: 'tabs',
   },
 });
