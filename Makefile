@@ -1,7 +1,7 @@
 PLATFORM_DIR_ANDROID=./platforms/android
 PLATFORM_DIR_IOS=./platforms/ios
 
-TARGET_ANDROID_DEVICE := RF8TA16CGVA#192.168.80.12:3333 #RF8TA16CGVA
+TARGET_ANDROID_DEVICE := RF8TA16CGVA ##Para obtener el anterior identificador debemos conectar el dispositivo al pc a través de cable usb y ejecutar en nuestra terminal el comando `adb device`
 
 
 clean-all:
@@ -34,5 +34,3 @@ else
 endif
 	ionic cordova build ios
 
-external-android:
-	ionic cordova run android --livereload --external --target=$(TARGET_ANDROID_DEVICE)
