@@ -13,11 +13,11 @@ La **To-Do List App** es una aplicación móvil construida con Ionic y Angular, 
 
 ## Estructura del Proyecto
 
-- `src/app/core`: Contiene servicios generales y utilidades.
-- `src/app/data`: Implementaciones específicas de repositorios.
-- `src/app/domain`: Entidades y repositorios abstractos.
-- `src/app/presentation`: Lógica de UI y la interacción del usuario.
-- `src/assets/i18n`: Archivos de traducción para soporte multilingüe.
+- `src/core`: Contiene servicios generales y utilidades.
+- `src/data`: Implementaciones específicas de repositorios.
+- `src/domain`: Entidades y repositorios abstractos.
+- `src/presentation`: Lógica de UI y la interacción del usuario.
+- `assets/i18n`: Archivos de traducción para soporte multilingüe.
 
 ## Instalación
 
