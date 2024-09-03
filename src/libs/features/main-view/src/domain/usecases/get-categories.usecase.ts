@@ -9,7 +9,7 @@ import { CategoryRepository } from '../repositories/category.repository';
 export class GetCategoriesUseCase implements UseCaseBase<void, Category[]> {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute(): Promise<Category[]> {
-    return await this.categoryRepository.getCategories();
+  execute(): Promise<Category[]> {
+    return this.categoryRepository.getCategories();
   }
 }

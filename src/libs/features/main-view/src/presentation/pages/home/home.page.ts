@@ -59,13 +59,17 @@ export class HomePage implements OnInit {
   public async selectedChanged(item: SelectDynamicEntity) {
     this.selectedCategory = item;
     if (this.selectedCategory.id) {
-      this.tasks = await this.getTasksByCategoryUseCase.execute(
-        this.selectedCategory.id
-      );
+      await this.getTaskByCategory();
       return;
     }
 
     this.loadTasks();
+  }
+
+  private async getTaskByCategory() {
+    this.tasks = await this.getTasksByCategoryUseCase.execute(
+      this.selectedCategory.id
+    );
   }
 
   public async goToDetailTask(isModeEdit = false, task?: Task) {
@@ -87,8 +91,17 @@ export class HomePage implements OnInit {
     this.loadTasks();
   }
 
-  async onDeleteTask(taskId: string) {
-    await this.deleteTaskUseCase.execute(taskId);
+  async onDeleteTask(task: Task) {
+    const isLastDelete = await this.deleteTaskUseCase.execute(task);
+    if (isLastDelete) {
+      this.clearSelection();
+    }
+
+    if (this.selectedCategory?.id) {
+      this.getTaskByCategory();
+      return;
+    }
+
     this.loadTasks();
   }
 

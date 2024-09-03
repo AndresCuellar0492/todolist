@@ -8,7 +8,7 @@ import { CategoryRepository } from '../repositories/category.repository';
 export class DeleteCategoryUseCase implements UseCaseBase<string, void> {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute(categoryId: string): Promise<void> {
-    await this.categoryRepository.deleteCategory(categoryId);
+  execute(categoryId: string): Promise<void> {
+    return this.categoryRepository.deleteCategory(categoryId);
   }
 }

@@ -9,7 +9,7 @@ import { TaskRepository } from '../repositories/task.repository';
 export class RefreshTasksUseCase implements UseCaseBase<Task[], void> {
   constructor(private taskRepository: TaskRepository) {}
 
-  async execute(tasks: Task[]): Promise<void> {
-    await this.taskRepository.refreshTasks(tasks);
+  execute(tasks: Task[]): Promise<void> {
+    return this.taskRepository.refreshTasks(tasks);
   }
 }

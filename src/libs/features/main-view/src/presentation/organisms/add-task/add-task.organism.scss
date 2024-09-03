@@ -1,21 +1,27 @@
 @import "src/theme/variables.scss";
 
 ion-toolbar {
-  font-family: $bold !important;
   color: black;
+}
+
+ion-button {
+  font-family: $medium !important;
 }
 
 ion-item {
   font-family: $medium !important;
 }
 
-::ng-deep {
-  .select {
-    .alert-head {
-      font-family: $medium !important;
-      background: red;
-    }
-  }
+h3 {
+  font-family: $bold !important;
+}
+
+ion-textarea {
+  font-family: $default !important;
+}
+
+ion-select {
+  font-family: $medium !important;
 }
 
 .task {

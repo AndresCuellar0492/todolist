@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageProvider } from '@libs/base/providers/storage.provider';
 import { MainViewConfig } from '@libs/features/main-view/main-view.config';
+import { randomId } from '@libs/utils/functions/src/lib/id-generator.util';
 import { Category } from '../../domain/entities/category.entity';
 import { CategoryRepository } from '../../domain/repositories/category.repository';
 import { GetTasksByCategoryUseCase } from '../../domain/usecases/get-tasks-by-category.usecase';
@@ -51,9 +52,7 @@ export class CategoryRepositoryImpl implements CategoryRepository {
       });
       this.refreshTasksUseCase.execute(tasks);
     } else {
-      const randomFactor = Math.floor(Math.random() * 1000);
-      const nextId = categories.length + 1 + randomFactor;
-      category.id = nextId.toString();
+      category.id = randomId();
 
       categories.push(category);
     }

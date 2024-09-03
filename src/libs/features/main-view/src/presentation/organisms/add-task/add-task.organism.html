@@ -17,7 +17,10 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h3>{{'organisms.add-task.title' | translate}}</h3>
+  <h3>
+    {{ (isModeEdit ? 'organisms.add-task.title-update' :
+    'organisms.add-task.title') | translate}}
+  </h3>
   <ion-item>
     <ion-textarea
       [(ngModel)]="taskDescription"
@@ -32,7 +35,6 @@
         label="{{'organisms.add-task.label-select-category' | translate}}"
         label-placement="floating"
         [(ngModel)]="category.id"
-        class="select"
         color="primary"
       >
         <ion-select-option *ngFor="let item of categories" [value]="item.id">

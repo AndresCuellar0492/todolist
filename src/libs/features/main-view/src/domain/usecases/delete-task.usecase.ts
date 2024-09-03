@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { UseCaseBase } from '@libs/features/commons';
 import { TaskRepository } from '../repositories/task.repository';
+import { Task } from './../entities/task.entity';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteTaskUseCase implements UseCaseBase<string, void> {
+export class DeleteTaskUseCase implements UseCaseBase<Task, boolean> {
   constructor(private taskRepository: TaskRepository) {}
 
-  async execute(taskId: string): Promise<void> {
-    await this.taskRepository.deleteTask(taskId);
+  async execute(task: Task): Promise<boolean> {
+    return this.taskRepository.deleteTask(task);
   }
 }

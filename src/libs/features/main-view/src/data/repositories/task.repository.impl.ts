@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageProvider } from '@libs/base/providers/storage.provider';
 import { MainViewConfig } from '@libs/features/main-view/main-view.config';
+import { randomId } from '@libs/utils/functions/src/lib/id-generator.util';
 import { Task } from '../../domain/entities/task.entity';
 import { TaskRepository } from '../../domain/repositories/task.repository';
 
@@ -13,10 +14,9 @@ export class TaskRepositoryImpl implements TaskRepository {
   constructor(private storageProvider: StorageProvider) {}
 
   async addTask(task: Task): Promise<void> {
-    const randomFactor = Math.floor(Math.random() * 1000);
-    const nextId = task.description.length + 1 + randomFactor;
-    task.id = nextId.toString();
     const tasks = await this.getTasks();
+    task.id = randomId();
+
     tasks.push(task);
     this.storageProvider.setItem(this.storageKey, tasks);
   }
@@ -35,10 +35,16 @@ export class TaskRepositoryImpl implements TaskRepository {
     this.storageProvider.setItem(this.storageKey, tasks);
   }
 
-  async deleteTask(taskId: string): Promise<void> {
-    let tasks = await this.getTasks();
-    tasks = tasks.filter((t) => t.id !== taskId);
-    this.storageProvider.setItem(this.storageKey, tasks);
+  async deleteTask(task: Task): Promise<boolean> {
+    let updatedTasks = await this.getTasks();
+    updatedTasks = updatedTasks.filter((t) => t.id !== task.id);
+    this.storageProvider.setItem(this.storageKey, updatedTasks);
+
+    const remainingTasksInCategory = updatedTasks.filter(
+      (t) => t.category?.id === task.category?.id
+    );
+
+    return remainingTasksInCategory.length === 0;
   }
 
   async getTasks(): Promise<Task[]> {

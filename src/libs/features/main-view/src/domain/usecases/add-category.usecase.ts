@@ -9,7 +9,7 @@ import { CategoryRepository } from '../repositories/category.repository';
 export class AddCategoryUseCase implements UseCaseBase<Category, void> {
   constructor(private categoryRepository: CategoryRepository) {}
 
-  async execute(category: Category): Promise<void> {
-    await this.categoryRepository.addCategory(category);
+  execute(category: Category): Promise<void> {
+    return this.categoryRepository.addCategory(category);
   }
 }

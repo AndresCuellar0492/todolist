@@ -30,7 +30,7 @@
       [task]="task"
       (detailTask)="goToDetailTask(true, task)"
       (updateTask)="onUpdateTask(task)"
-      (delete)="onDeleteTask(task.id)"
+      (delete)="onDeleteTask(task)"
     ></app-task-item>
     <p class="sub-title ion-padding" *ngIf="!hasTasks">
       {{'pages.home.no-tasks' | translate}}

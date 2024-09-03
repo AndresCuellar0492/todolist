@@ -9,10 +9,10 @@ import { TaskRepository } from '../repositories/task.repository';
 export class GetTasksByCategoryUseCase implements UseCaseBase<string, Task[]> {
   constructor(private taskRepository: TaskRepository) {}
 
-  async execute(categoryId?: string | null): Promise<Task[]> {
+  execute(categoryId?: string | null): Promise<Task[]> {
     if (categoryId) {
-      return await this.taskRepository.getTasksByCategory(categoryId);
+      return this.taskRepository.getTasksByCategory(categoryId);
     }
-    return await this.taskRepository.getTasks();
+    return this.taskRepository.getTasks();
   }
 }

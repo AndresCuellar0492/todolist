@@ -17,6 +17,7 @@
       "btn-cancel": "Cancelar",
       "btn-save": "Guardar",
       "title": "Crear tarea",
+      "title-update": "Actualizar tarea",
       "placeholder-add-task": "Ingresa tu tarea",
       "label-select-category": "Selecciona categoria"
     }
